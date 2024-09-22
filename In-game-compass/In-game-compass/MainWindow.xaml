@@ -1,0 +1,42 @@
+﻿<Window x:Class="In_game_compass.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:In_game_compass"
+        mc:Ignorable="d"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
+        Topmost="True"
+        ShowInTaskbar="False"
+        WindowState="Maximized"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <!-- 指南针容器 -->
+        <Grid HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,50,0,0" Width="1920" ClipToBounds="True">
+            <Grid.Background>
+                <VisualBrush x:Name="CompassBrush" TileMode="Tile" ViewportUnits="Absolute" Stretch="None" AlignmentX="Left" AlignmentY="Top"/>
+            </Grid.Background>
+            <!-- 指南针刻度 -->
+            <!-- <Canvas x:Name="CompassCanvas" Height="40" Width="1600"> -->
+                <!-- 刻度将通过代码动态添加 -->
+            <!-- </Canvas> -->
+            <!-- 中心箭头 -->
+            <Polygon Points="10,0 0,20 10,40 20,20" Fill="Red"
+                     HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                     <!-- RenderTransformOrigin="0.5,0.5" Margin="0,5,0,0"/> -->
+            <!-- 当前方位文本 -->
+            <TextBlock x:Name="HeadingText" FontSize="16" Foreground="White" FontWeight="Bold"
+                       HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,50,0,0"/>
+        </Grid>
+
+        <!-- 可选：灵敏度和校准控件 -->
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,20">
+            <TextBlock Text="灵敏度：" Foreground="White" VerticalAlignment="Center"/>
+            <TextBox x:Name="SensitivityTextBox" Width="50" Text="0.05" Margin="5,0,0,0"/>
+            <Button Content="应用" Click="ApplySensitivityButton_Click" Margin="5,0,0,0"/>
+            <Button Content="校准" Click="CalibrateButton_Click" Margin="5,0,0,0"/>
+        </StackPanel>
+    </Grid>
+</Window>
